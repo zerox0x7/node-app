@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&family=Noto+Sans+Arabic:wght@500&display=swap" rel="stylesheet">
+
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" /> -->
+
+
+    
+</head>
+<body  class=" relative bg-none bg-gray-800   p-0">
+
+    <button type="button" class=" absolute top-4 left-4 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+        <svg aria-hidden="true" class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg>
+        <%= w %>
+      </button>
+
+    <!-- flow button  it will show just for Admin-->
+    <% if (admin) { %>
+        <div class="fixed w-14 h-14 bottom-3 right-3 z-50 rounded-full bg-blue-800 overflow-hidden  ">
+            <button data-modal-target="rami" data-modal-toggle="rami" type="button" class=" w-full h-full  text-2xl overflow-hidden text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4rounded-full focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium    px-5 py-2.5 text-center mr-2 mb-2">+</button>
+        </div>
+        <% } %>
+            
+    <!-- / flow button -->
+    
+    <!-- <button data-modal-target="medium-modal" data-modal-toggle="medium-modal" class="block w-full md:w-auto text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button" >
+        Default modal
+        </button> -->
+
+
+        <div id="popup-modal" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <button type="button" class="absolute z-50 top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="popup-modal">
+                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <div class=" text-center">
+
+                                    <!-- Modal content -->
+                        <div class="relative bg-white rounded-lg shadow dark:bg-[#1e3032]">
+                            <!-- Modal header -->
+                            <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
+                                <h3 class="text-xl font-medium text-gray-900 dark:text-white">
+                                شحن حساب1
+                                </h3>
+                            
+                            </div>
+                            <!-- Modal body -->
+                            <div class="p-6 space-y-6">
+                                <!-- <figure class="relative  m-auto ">
+                                    <a href="#">
+                                        <img class="rounded-xl h-28 w-auto m-auto" src="./img/start.png" alt="image description">
+                                    </a>
+                                    
+                                </figure> -->
+                                <div class="max-w-2xl px-4 py-8 mx-auto lg:py-16">
+                                    <!-- <h2 class="mb-4 text-lg font-bold text-gray-900 dark:text-white">Update product</h2> -->
+                                    <form action="/api/v1/users/update" method="post">
+                                        <div class="grid gap-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
+                                            <!-- <div class="sm:col-span-2">
+                                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Name</label>
+                                                <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="Apple iMac 27&ldquo;" placeholder="Type product name" required="">
+                                            </div> -->
+                                            <!-- <div class="w-full">
+                                                <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
+                                                <input type="text" name="brand" id="brand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="Apple" placeholder="Product brand" required="">
+                                            </div> -->
+                                            <input type="hidden" name="pro" value="true">
+
+                                            <div class="w-full">
+                                                <label for="wallet" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">مبلغ الشحن</label>
+                                                <input type="number" name="wallet" id="walletNum" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="2999" placeholder="$299" required="">
+                                            </div>
+
+                                            <div>
+                                                <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">نوع الحساب </label>
+                                                <select name="category" id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                    <option selected="pubg">pubg</option>
+                                                    <option value="tiktok">tiktok</option>
+                                                    <option value="freefire">freefire</option>
+                                                    <option value="whatsapp">whatsapp</option>
+                                                    <option value="snapchat">snapchat</option>
+                                                </select>
+                                            </div>
+                                            <div>
+                                                <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">رسالة مرفقة</label>
+                                                <input type="text" maxlength="50" name="description" id="description" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="15" placeholder="ارفق رسالة" required="">
+                                            </div> 
+                                            <!-- <div class="sm:col-span-2">
+                                                <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                                                <textarea id="description" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write a product description here...">Standard glass, 3.8GHz 8-core 10th-generation Intel Core i7 processor, Turbo Boost up to 5.0GHz, 16GB 2666MHz DDR4 memory, Radeon Pro 5500 XT with 8GB of GDDR6 memory, 256GB SSD storage, Gigabit Ethernet, Magic Mouse 2, Magic Keyboard - US</textarea>
+                                            </div> -->
+                                        </div>
+                                        <div class="flex items-center space-x-8">
+                                            <button id="walletId" type="submit" class="text-white bg-blue-700 hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                                Accept 
+                                            </button>
+                                            <button type="submit" class=" flex  text-white bg-red-700 hover:bg-red-900 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                                <svg class="w-5 h-5 mr-1 -ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                                                
+                                                Accept 
+                                            </button>
+                                        
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                    <!-- Modal footer -->
+                    <!-- <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                        <button data-modal-hide="medium-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I accept</button>
+                        <button data-modal-hide="medium-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
+                    </div> -->
+                </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- admin popup -->
+        <div id="rami" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <button type="button" class="absolute z-50 top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="rami">
+                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <div class=" text-center">
+
+                                    <!-- Modal content -->
+                        <div class="relative bg-white rounded-lg shadow dark:bg-[#1e3032]">
+                            <!-- Modal header -->
+                            <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
+                                <h3 class="text-xl font-medium text-gray-900 dark:text-white">
+                                
+                                    إضافة منتج
+                                </h3>
+                            
+                            </div>
+                            <!-- Modal body -->
+                            <div class="p-6 space-y-6">
+                                <!-- <figure class="relative  m-auto ">
+                                    <a href="#">
+                                        <img class="rounded-xl h-28 w-auto m-auto" src="./img/start.png" alt="image description">
+                                    </a>
+                                    
+                                </figure> -->
+                                <div class="max-w-2xl px-4 py-8 mx-auto lg:py-16">
+                                    <!-- <h2 class="mb-4 text-lg font-bold text-gray-900 dark:text-white">Update product</h2> -->
+                                    <form action="/api/v1/users/login">
+                                        <div class="w-full">
+
+                                            
+                                                    <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="file_input">Upload file</label>
+                                                    <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" id="file_input" type="file">
+
+
+                                        </div>
+                                        <div class="grid gap-4 pt-4 mb-4 sm:grid-cols-2 sm:gap-6 sm:mb-5">
+                                            <!-- <div class="sm:col-span-2">
+                                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Product Name</label>
+                                                <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="Apple iMac 27&ldquo;" placeholder="Type product name" required="">
+                                            </div> -->
+                                            <!-- <div class="w-full">
+                                                <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand</label>
+                                                <input type="text" name="brand" id="brand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="Apple" placeholder="Product brand" required="">
+                                            </div> -->
+                         
+                                      
+                                            <div>
+                                                <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> اسم المنتج</label>
+                                                <input type="text" name="item-weight" id="item-weight" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="" placeholder=" ...اكتب اسم " required="">
+                                            </div> 
+                                            <div>
+                                                <label for="item-weight" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"> كود المنتج</label>
+                                                <input type="number" name="item-weight" id="item-weight" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" value="" placeholder=" ...اكتب كود" required="">
+                                            </div> 
+                                            <!-- <div class="sm:col-span-2">
+                                                <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                                                <textarea id="description" rows="8" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Write a product description here...">Standard glass, 3.8GHz 8-core 10th-generation Intel Core i7 processor, Turbo Boost up to 5.0GHz, 16GB 2666MHz DDR4 memory, Radeon Pro 5500 XT with 8GB of GDDR6 memory, 256GB SSD storage, Gigabit Ethernet, Magic Mouse 2, Magic Keyboard - US</textarea>
+                                            </div> -->
+                                        </div>
+                                        <div class="flex items-center pt-12 justify-between">
+                                            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                                Accept 
+                                            </button>
+                                            <button type="submit" class=" flex  text-white bg-red-700 hover:bg-red-900 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                                                <svg class="w-5 h-5 mr-1 -ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+                                                
+                                                Accept 
+                                            </button>
+                                        
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                    <!-- Modal footer -->
+                    <!-- <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                        <button data-modal-hide="medium-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I accept</button>
+                        <button data-modal-hide="medium-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
+                    </div> -->
+                </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- admin popup -->
+
+
+        <div id="ask" tabindex="-1" class="fixed top-0 left-0 right-0 z-50 hidden p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative w-full max-w-md max-h-full">
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <button type="button" class="absolute z-50 top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="ask">
+                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                    <div class=" text-center">
+
+                                    <!-- Modal content -->
+                        <div class="relative bg-white rounded-lg shadow dark:bg-[#1e3032]">
+                            <!-- Modal header -->
+                            <div class="flex items-center justify-between p-5 border-b rounded-t dark:border-gray-600">
+                                <h3 class="text-xl font-medium text-gray-900 dark:text-white">
+                                        ask for an account 
+                                    </h3>
+                            
+                            </div>
+                            <!-- Modal body -->
+                            <div class="p-6 space-y-6">
+                                <!-- <figure class="relative  m-auto ">
+                                    <a href="#">
+                                        <img class="rounded-xl h-28 w-auto m-auto" src="./img/start.png" alt="image description">
+                                    </a>
+                                    
+                                </figure> -->
+                                contact us 
+                                <div class="max-w-2xl flex ml-24  px-4 py-8 mx-auto lg:py-16">
+                                    <!-- <h2 class="mb-4 text-lg font-bold text-gray-900 dark:text-white">Update product</h2> -->
+                                   whatsapp: <p class="text-green-500 pl-4">05382446058</p>
+                                </div>
+                            </div>
+                    <!-- Modal footer -->
+                    <!-- <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
+                        <button data-modal-hide="medium-modal" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">I accept</button>
+                        <button data-modal-hide="medium-modal" type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-gray-500 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600">Decline</button>
+                    </div> -->
+                </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>                   
+
+
+
+
+<img class="h-40  md:h-60 lg:h-60  xl:h-60 2xl:h-60  w-full object-cover" src="./img/land.png" alt="">
+<div class="relative  h-full bg-[#1e3032]">
+    <div class="absolute h-32  w-32  lg:h-40 lg:w-40  md:h-40 md:w-40  right-3 rounded-lg shadow-lg   -top-36 lg:-top-44 md:-top-44" > 
+        <div class="w-full h-full bg-transparent rounded-lg shadow-2xlbg-transparent cursor-pointer group perspective">
+            <div class="relative preserve-3d group-hover:my-rotate-y-180 w-full h-full duration-1000">
+            <div class="absolute backface-hidden  w-full h-full">
+                <img class=" shadow-lg shadow-black h-full w-full object-cover rounded-lg" src="./img/ramii.png" alt="">
+
+            </div>
+            <div
+                class="absolute my-rotate-y-180 rounded-lg backface-hidden w-full h-full bg-gray-900 overflow-hidden"
+            >
+                <img src="./img/w2.gif" alt="">
+             
+            </div>
+            </div>
+        </div>
+    </div>
+    <button data-modal-target="ask" data-modal-toggle="ask" type="button" class=" absolute left-4 lg:-top-20 lg:text-xl font-arabic -top-12 text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800   rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">إنشاء حساب</button>
+    <!-- grid  -->
+    <div class="  grid grid-cols-2 gap-2 p-1 md:pt-8 md:gap-8  md:grid-cols-3 xl:grid-cols-4   pb-16 bg-gradient-to-r from-cyan-500 to-blue-500 ">
+        
+        <!-- 1 item  -->
+
+            <div class="w-40 h-36 md:w-60 md:h-60 bg-transparent rounded-lg shadow-2xlbg-transparent cursor-pointer group perspective">
+                <div class="relative preserve-3d group-hover:my-rotate-y-180 w-full h-full duration-1000">
+                <div class="absolute backface-hidden  w-full h-full">
+                    <img class=" shadow-lg shadow-black h-full w-full object-cover rounded-lg" src="./img/likee.png" alt="">
+
+                </div>
+                <div
+                    class="absolute my-rotate-y-180 rounded-lg backface-hidden w-full h-full bg-gray-900 overflow-hidden"
+                >
+                    <img src="./img/bg.png" alt="">
+                    <div
+                    class="text-center flex flex-col items-center justify-center h-full text-gray-800 px-2 pb-24"
+                    >
+                    <!-- <h1 class="text-lg font-semibold">The King's Man</h1>
+                    <p class="my-2">9.0 Rating</p> -->
+                    <!-- <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+                        itaque assumenda saepe animi maxime libero non quasi, odit natus
+                        veritatis enim culpa nam inventore doloribus quidem temporibus
+                        amet velit accusamus.
+                    </p> -->
+                    <button data-modal-target="popup-modal" data-modal-toggle="popup-modal" class="bg-teal-500 font-arabic  t py-2  text-white rounded-lg absolute -bottom-20  duration-1000 group-hover:bottom-20 scale-0 group-hover:scale-125  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800   px-4 text-center mr-2 mb-2">
+                       start
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+   
+        <!-- / 1 item -->
+      
+       <!-- 2 item  -->
+
+        <div class="w-40 h-36  md:w-60 md:h-60 bg-transparent rounded-lg shadow-2xlbg-transparent cursor-pointer group perspective">
+            <div class="relative preserve-3d group-hover:my-rotate-y-180 w-full h-full duration-1000">
+            <div class="absolute backface-hidden  w-full h-full">
+                <img class=" shadow-lg shadow-black h-full w-full object-cover rounded-lg" src="./img/tiktok.png" alt="">
+
+            </div>
+            <div
+                class="absolute my-rotate-y-180 rounded-lg backface-hidden w-full h-full bg-gray-900 overflow-hidden"
+            >
+                <img src="./img/bg.png" alt="">
+                <div
+                class="text-center flex flex-col items-center justify-center h-full text-gray-800 px-2 pb-24"
+                >
+                <!-- <h1 class="text-lg font-semibold">The King's Man</h1>
+                <p class="my-2">9.0 Rating</p> -->
+                <!-- <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+                    itaque assumenda saepe animi maxime libero non quasi, odit natus
+                    veritatis enim culpa nam inventore doloribus quidem temporibus
+                    amet velit accusamus.
+                </p> -->
+                <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                    class="bg-teal-500 font-arabic  t py-2  text-white rounded-lg absolute -bottom-20  duration-1000 group-hover:bottom-20 scale-0 group-hover:scale-125  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800   px-4 text-center mr-2 mb-2"
+                >
+                start
+                </button>
+                </div>
+            </div>
+            </div>
+        </div>
+
+
+       <!-- / 2 item -->
+
+       <!-- 3 item  -->
+            <div class="w-40 h-36 md:w-60 md:h-60 bg-transparent rounded-lg shadow-2xlbg-transparent cursor-pointer group perspective">
+                <div class="relative preserve-3d group-hover:my-rotate-y-180 w-full h-full duration-1000">
+                <div class="absolute backface-hidden  w-full h-full">
+                    <img class=" shadow-lg shadow-black h-full w-full object-cover rounded-lg" src="./img/pubg.png" alt="">
+
+                </div>
+                <div
+                    class="absolute my-rotate-y-180 rounded-lg backface-hidden w-full h-full bg-gray-900 overflow-hidden"
+                >
+                    <img src="./img/bg.png" alt="">
+                    <div
+                    class="text-center flex flex-col items-center justify-center h-full text-gray-800 px-2 pb-24"
+                    >
+                    <!-- <h1 class="text-lg font-semibold">The King's Man</h1>
+                    <p class="my-2">9.0 Rating</p> -->
+                    <!-- <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+                        itaque assumenda saepe animi maxime libero non quasi, odit natus
+                        veritatis enim culpa nam inventore doloribus quidem temporibus
+                        amet velit accusamus.
+                    </p> -->
+                    <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                        class="bg-teal-500 font-arabic  t py-2  text-white rounded-lg absolute -bottom-20  duration-1000 group-hover:bottom-20 scale-0 group-hover:scale-125  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800   px-4 text-center mr-2 mb-2"
+                    >
+                    start
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        <!-- / 3 item -->
+
+        <!-- 4 item  -->
+            <div class="w-40 h-36 md:w-60 md:h-60 bg-transparent rounded-lg shadow-2xlbg-transparent cursor-pointer group perspective">
+                <div class="relative preserve-3d group-hover:my-rotate-y-180 w-full h-full duration-1000">
+                <div class="absolute backface-hidden  w-full h-full">
+                    <img class=" shadow-lg shadow-black h-full w-full object-cover rounded-lg" src="./img/whatsapp.png" alt="">
+
+                </div>
+                <div
+                    class="absolute my-rotate-y-180 rounded-lg backface-hidden w-full h-full bg-gray-900 overflow-hidden"
+                >
+                    <img src="./img/bg.png" alt="">
+                    <div
+                    class="text-center flex flex-col items-center justify-center h-full text-gray-800 px-2 pb-24"
+                    >
+                    <!-- <h1 class="text-lg font-semibold">The King's Man</h1>
+                    <p class="my-2">9.0 Rating</p> -->
+                    <!-- <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+                        itaque assumenda saepe animi maxime libero non quasi, odit natus
+                        veritatis enim culpa nam inventore doloribus quidem temporibus
+                        amet velit accusamus.
+                    </p> -->
+                    <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                        class="bg-teal-500 font-arabic  t py-2  text-white rounded-lg absolute -bottom-20  duration-1000 group-hover:bottom-20 scale-0 group-hover:scale-125  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800   px-4 text-center mr-2 mb-2"
+                    >
+                    start
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        <!-- / 4 item -->
+
+        <!-- 5 item  -->
+            <div class="w-40 h-36 md:w-60 md:h-60 bg-transparent rounded-lg shadow-2xlbg-transparent cursor-pointer group perspective">
+                <div class="relative preserve-3d group-hover:my-rotate-y-180 w-full h-full duration-1000">
+                <div class="absolute backface-hidden  w-full h-full">
+                    <img class=" shadow-lg shadow-black h-full w-full object-cover rounded-lg" src="./img/freefire.png" alt="">
+
+                </div>
+                <div
+                    class="absolute my-rotate-y-180 rounded-lg backface-hidden w-full h-full bg-gray-900 overflow-hidden"
+                >
+                    <img src="./img/bg.png" alt="">
+                    <div
+                    class="text-center flex flex-col items-center justify-center h-full text-gray-800 px-2 pb-24"
+                    >
+                    <!-- <h1 class="text-lg font-semibold">The King's Man</h1>
+                    <p class="my-2">9.0 Rating</p> -->
+                    <!-- <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+                        itaque assumenda saepe animi maxime libero non quasi, odit natus
+                        veritatis enim culpa nam inventore doloribus quidem temporibus
+                        amet velit accusamus.
+                    </p> -->
+                    <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                        class="bg-teal-500 font-arabic  t py-2  text-white rounded-lg absolute -bottom-20  duration-1000 group-hover:bottom-20 scale-0 group-hover:scale-125  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800   px-4 text-center mr-2 mb-2"
+                    >
+                    start
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        <!-- / 5 item -->
+
+        <!-- 6 item  -->
+            <div class="w-40 h-36 md:w-60 md:h-60 bg-transparent rounded-lg shadow-2xlbg-transparent cursor-pointer group perspective">
+                <div class="relative preserve-3d group-hover:my-rotate-y-180 w-full h-full duration-1000">
+                <div class="absolute backface-hidden  w-full h-full">
+                    <img class=" shadow-lg shadow-black h-full w-full object-cover rounded-lg" src="./img/youtube.png" alt="">
+
+                </div>
+                <div
+                    class="absolute my-rotate-y-180 rounded-lg backface-hidden w-full h-full bg-gray-900 overflow-hidden"
+                >
+                    <img src="./img/bg.png" alt="">
+                    <div
+                    class="text-center flex flex-col items-center justify-center h-full text-gray-800 px-2 pb-24"
+                    >
+                    <!-- <h1 class="text-lg font-semibold">The King's Man</h1>
+                    <p class="my-2">9.0 Rating</p> -->
+                    <!-- <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+                        itaque assumenda saepe animi maxime libero non quasi, odit natus
+                        veritatis enim culpa nam inventore doloribus quidem temporibus
+                        amet velit accusamus.
+                    </p> -->
+                    <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                        class="bg-teal-500 font-arabic  t py-2  text-white rounded-lg absolute -bottom-20  duration-1000 group-hover:bottom-20 scale-0 group-hover:scale-125  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800   px-4 text-center mr-2 mb-2"
+                    >
+                    start
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        <!-- / 6 item -->
+
+        <!-- 7 item  -->
+            <div class="w-40 h-36 md:w-60 md:h-60 bg-transparent rounded-lg shadow-2xlbg-transparent cursor-pointer group perspective">
+                <div class="relative preserve-3d group-hover:my-rotate-y-180 w-full h-full duration-1000">
+                <div class="absolute backface-hidden  w-full h-full">
+                    <img class=" shadow-lg shadow-black h-full w-full object-cover rounded-lg" src="./img/bigo.png" alt="">
+
+                </div>
+                <div
+                    class="absolute my-rotate-y-180 rounded-lg backface-hidden w-full h-full bg-gray-900 overflow-hidden"
+                >
+                    <img src="./img/bg.png" alt="">
+                    <div
+                    class="text-center flex flex-col items-center justify-center h-full text-gray-800 px-2 pb-24"
+                    >
+                    <!-- <h1 class="text-lg font-semibold">The King's Man</h1>
+                    <p class="my-2">9.0 Rating</p> -->
+                    <!-- <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+                        itaque assumenda saepe animi maxime libero non quasi, odit natus
+                        veritatis enim culpa nam inventore doloribus quidem temporibus
+                        amet velit accusamus.
+                    </p> -->
+                    <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                        class="bg-teal-500 font-arabic  t py-2  text-white rounded-lg absolute -bottom-20  duration-1000 group-hover:bottom-20 scale-0 group-hover:scale-125  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800   px-4 text-center mr-2 mb-2"
+                    >
+                    start
+                    </button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        <!-- / 7 item -->
+
+        <!-- 8 item -->
+                <div class="w-40 h-36 md:w-60 md:h-60 bg-transparent rounded-lg shadow-2xlbg-transparent cursor-pointer group perspective">
+                    <div class="relative preserve-3d group-hover:my-rotate-y-180 w-full h-full duration-1000">
+                    <div class="absolute backface-hidden  w-full h-full">
+                        <img class=" shadow-lg shadow-black h-full w-full object-cover rounded-lg" src="./img/snapchat.png" alt="">
+
+                    </div>
+                    <div
+                        class="absolute my-rotate-y-180 rounded-lg backface-hidden w-full h-full bg-gray-900 overflow-hidden"
+                    >
+                        <img src="./img/bg.png" alt="">
+                        <div
+                        class="text-center flex flex-col items-center justify-center h-full text-gray-800 px-2 pb-24"
+                        >
+                        <!-- <h1 class="text-lg font-semibold">The King's Man</h1>
+                        <p class="my-2">9.0 Rating</p> -->
+                        <!-- <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+                            itaque assumenda saepe animi maxime libero non quasi, odit natus
+                            veritatis enim culpa nam inventore doloribus quidem temporibus
+                            amet velit accusamus.
+                        </p> -->
+                        <button data-modal-target="popup-modal" data-modal-toggle="popup-modal"
+                            class="bg-teal-500 font-arabic  t py-2  text-white rounded-lg absolute -bottom-20  duration-1000 group-hover:bottom-20 scale-0 group-hover:scale-125  bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800   px-4 text-center mr-2 mb-2"
+                        >
+                        start
+                        </button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+        <!-- / 8 item -->
+
+
+        
+
+
+    </div>
+
+
+
+    
+
+    <!-- / grid -->
+
+</div>
+
+
+
+<!-- footer -->
+
+    <footer aria-label="Site Footer" class="bg-gray-800    ">
+        <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+            <div class="flex justify-center text-teal-600 sm:justify-start">
+                    <img class="h-12" src="./img/footer.png" alt="">
+            </div>
+    
+            <p class="mt-4 text-center text-sm text-gray-500 lg:mt-0 lg:text-right">
+            Copyright &copy; 2023. All rights reserved.
+            </p>
+        </div>
+        </div>
+    </footer>
+  
+<!-- / footer -->
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.js"></script>
+</body>
+</html>`
