@@ -46,7 +46,7 @@ pagesRoutes.get('/admin',async (req,res) =>{
 
         const decoded = jwt.decode(token);
 
-        if(decoded.id == '6457b146cb8ce3d32f11f27f'){
+        if(decoded.id == '645f7c262f3d37e4de5e190c'){
             console.log('token id : ' , decoded.id);
 
             // axios.get('http://localhost:9000/api/v1/users')
@@ -95,7 +95,7 @@ pagesRoutes.get('/',async (req,res) =>{
         const userR = await User.findById(decoded.id);
         console.log('userfound ddd: ',userR.wallet);
 
-        if(decoded.id == '6457b146cb8ce3d32f11f27f'){
+        if(decoded.id == '645f7c262f3d37e4de5e190c'){
             console.log('token id : ' , decoded.id);
             res.render('index',{admin:true,w:userR.wallet});
 

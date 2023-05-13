@@ -26,6 +26,24 @@ const userGetAllCtrl = async (req, res, next) => {
     // }
 };
 
+const userUpdateCtrl = async (req, res, next) => {
+
+    const {wallet,id} = req.body;
+   
+    
+    
+    const user = await User.findByIdAndUpdate(id,{
+        wallet,
+    })
+
+    try {
+        res.send('ok')
+
+    } catch (error) {
+        res.json(error.message);
+
+    }
+};
 
 const userUpdateCtrlPro = async (req, res, next) => {
     const {pro} = req.body;
@@ -43,7 +61,8 @@ const userUpdateCtrlPro = async (req, res, next) => {
 
         
         const user = await User.findById(decoded.id)
-        console.log('it is :',req.body)
+        // console.log('it is :',req.body)
+        // console.log('user.wallet :', user.wallet)
         let walletPayload = user.wallet - Number(wallet);
         if(walletPayload <= 0) {
             res.send('you do not have enough money !');
@@ -59,35 +78,63 @@ const userUpdateCtrlPro = async (req, res, next) => {
                 lastname: user.lastname,
     
             })
-            
-            const axios = require('axios');
-            axios.put(`http://localhost:9000/api/v1/users/${decoded.id}`, {wallet: walletPayload,id:decoded.id})
-            .then(response => {
-                // res.send('okay')
-                res.send("<script> window.location.href = '/'</script>");
+
+
+            const users = await User.findByIdAndUpdate(decoded.id,{
+                wallet:walletPayload,
             })
-            .catch(error => {
-            console.error(error);
-            });
+
+            // console.log('here:',users.wallet);
+        
+            try {
+                
+                res.send("<script> window.location.href = '/'</script>");
+            } catch (error) {
+                res.json(error.message);
+        
+            }
+            
+            // const axios = require('axios');
+            // axios.put(`https://tameed-mal.com/api/v1/users/${decoded.id}`, {wallet: walletPayload,id:decoded.id})
+            // .then(response => {
+            //     // res.send('okay')
+            //     res.send("<script> window.location.href = '/'</script>");
+            // })
+            // .catch(error => {
+            // console.error(error);
+            // });
         }
 
-        
-       
-        
+
     
     }else if ( pro == "updateUserWallet"){
         const { walletUpdate ,walletUserId} = req.body;
-       
-        const axios = require('axios');
-            axios.put(`http://localhost:9000/api/v1/users/'${walletUserId}'`, {wallet: walletUpdate,id: walletUserId})
-            .then(response => {
 
-                res.send(`<script> window.location.href = "http://localhost:9000/admin"; </script> `)
+        // console.log('walletUserId: ',walletUserId)
+       
+        // const axios = require('axios');
+        //     axios.put(`https://tameed-mal.com/api/v1/users/'${walletUserId}'`, {wallet: walletUpdate,id: walletUserId})
+        //     .then(response => {
+
+        //         res.send(`<script> window.location.href = "/admin"; </script> `)
             
-            })
-            .catch(error => {
-            console.error(error);
-            });
+        //     })
+        //     .catch(error => {
+        //     console.error(error);
+        //     });
+        const users = await User.findByIdAndUpdate(walletUserId,{
+            wallet:walletUpdate,
+        })
+
+        
+    
+        try {
+            res.send("<script> window.location.href = '/admin'</script>");
+    
+        } catch (error) {
+            res.json(error.message);
+    
+        }
 
 
     }
@@ -111,28 +158,10 @@ const userDeleteCtrl = async (req, res, next) => {
 };
 
 
-const userUpdateCtrl = async (req, res, next) => {
-
-    const {wallet,id} = req.body;
-   
-    
-    
-    const user = await User.findByIdAndUpdate(id,{
-        wallet,
-    })
-
-    try {
-        res.send('ok')
-
-    } catch (error) {
-        res.json(error.message);
-
-    }
-};
 
 
 const userRegisterCtrl = async (req, res, next) => {
-    console.log(req.body);
+    // console.log(req.body);
     const { firstname, lastname, email, password ,wallet} = req.body;
     try {
         //NOTE -  checking if email is exist
@@ -170,14 +199,14 @@ const userLoginCtrl = async (req, res, next) => {
 
 
     const {email,password} = req.body;
-    console.log('email is # :', email);
+    // console.log('email is # :', email);
  
   
 
     try {
         //NOTE - check if  email exsit
         const userFound = await User.findOne({email});
-        console.log('userFound: #: ',userFound)
+        // console.log('userFound: #: ',userFound)
         if(!userFound ){
 
             return res.json({
@@ -220,7 +249,7 @@ const userGetProfile = async (req, res, next) => {
 
     try {
         const token = getTokenFromHeader(req);
-        console.log(token);
+        // console.log(token);
         res.json({msg:'okay'});
 
     } catch (error) {
